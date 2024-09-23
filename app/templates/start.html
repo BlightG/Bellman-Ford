@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>input number of vetices to initialize </p>
+<form method="POST">
+	<label for="vertices">Number of Vertices:</label><br>
+	<input type="number" id="vertices" name="vertices" min="2" required><br><br>
+
+	<label for="edges">Number of Edges:</label><br>
+	<input type="number" id="edges" name="edges" min="1" required><br><br>
+
+	<input type="submit" value="Submit">
+</form>
+{% endblock %}

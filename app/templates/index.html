@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+		<h2>Bellman-Ford Algorithm Input</h2>
+
+		{% if error %}
+		<p style="color:red;">{{ error }}</p>
+		{% endif %}
+
+		<form method="POST">
+
+			<label for="source">Source Vertex:</label><br>
+			<input type="number" id="source" name="source" min="0" max="{{ vertices - 1}}" required><br><br>
+
+			<label for="destination">Destination Vertex:</label><br>
+			<input type="number" id="destination" name="destination" min="0" max="{{ vertices - 1}}"required><br><br>
+
+			<label for="edges">Edges (u,v,weight) - Add multiple edges separated by commas:</label><br>
+			
+			<input type="text" name="edges[]" placeholder="0,1,4" required><br><br>
+			{% if edges > 2 %}
+				{% for i in range(edges	- 1) %}
+					<input type="text" name="edges[]" placeholder="0,2,5"><br><br>
+				{% endfor %}
+			{% endif %}
+
+			<input type="submit" value="Submit">
+		</form>
+{% endblock %}
