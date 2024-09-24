@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-<p>input number of vetices to initialize </p>
+<div class="start-message">
+	<h2>
+		<p>Input number of vetices and edges to initialize</p>
+	</h2>
+	<p> To start computing a Bellman-Ford Computation first fill the number of vertices and edges you will need, </p>
+	<p> you can change the number of edges later</p>
+</div>
 <form method="POST">
 	<label for="vertices">Number of Vertices:</label><br>
 	<input type="number" id="vertices" name="vertices" min="2" required><br><br>

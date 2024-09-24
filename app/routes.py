@@ -1,6 +1,7 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import request, render_template, redirect, url_for, flash
 from app import app
 from graph.belman import Graph
+from app.utils.combinations import combinations
 
 @app.route('/edges', methods=['GET', 'POST'])
 def indexs():
@@ -12,8 +13,12 @@ def indexs():
 
     vertices = int(vertices)
     edges = int(edges)
+    max_edge = combinations(vertices)
 
     if request.method == 'GET':
+        if max_edge < edges:
+            edges = max_edge
+            flash(f"with {vertices} verticees maximun allowd edges is {max_edge} ")
         return render_template('/index.html', vertices=vertices, edges=edges)
 
     if request.method == 'POST':
@@ -27,7 +32,6 @@ def indexs():
 
         # Parse edges from form data
         for edge in edge_data:
-           print(edge)
            u, v, w = map(int, edge.split(','))
            graph.add_edge(u, v, w)
 
