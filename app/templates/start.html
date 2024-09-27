@@ -1,19 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="start-message">
+<div class="start-message centered">
 	<h2>
 		<p>Input number of vetices and edges to initialize</p>
 	</h2>
 	<p> To start computing a Bellman-Ford Computation first fill the number of vertices and edges you will need, </p>
 	<p> you can change the number of edges later</p>
 </div>
-<form method="POST">
-	<label for="vertices">Number of Vertices:</label><br>
-	<input type="number" id="vertices" name="vertices" min="2" required><br><br>
+<form method="POST" class="centered">
+	<div class=".flex-container">
+		<label for="vertices">Number of Vertices:</label>
+		<input type="number" id="vertices" name="vertices" min="2" required><br>
+	</div>
 
-	<label for="edges">Number of Edges:</label><br>
-	<input type="number" id="edges" name="edges" min="1" required><br><br>
+	<div class=".flex-container">
+		<label for="edges">Number of Edges:</label>
+		<input type="number" id="edges" name="edges" min="1" required><br><br>
+	</div>
 
-	<input type="submit" value="Submit">
+	<input type="submit" value="Submit" class="submit">
 </form>
 {% endblock %}

@@ -22,31 +22,38 @@ def indexs():
         return render_template('/index.html', vertices=vertices, edges=edges)
 
     if request.method == 'POST':
-        
         source_vertices = int(request.form['source'])
         destination = int(request.form['destination'])
         edge_data = request.form.getlist('edges[]')
-
+        max_stops = int(request.form['max_stops'])
         # Initalize graph data
         graph = Graph(vertices)
 
         # Parse edges from form data
         for edge in edge_data:
-           u, v, w = map(int, edge.split(','))
-           graph.add_edge(u, v, w)
+            try:
+                u, v, w = map(int, edge.split(','))
+                graph.add_edge(u, v, w)
+            except(ValueError) as result:
+                return render_template('error.html', error=result)
+
 
         # Run Bellman-Ford algorithm
         result = graph.bellman_ford(source_vertices)
 
+        if result == -1:
+            return render_template('error.html', error="Negative cycle detected")
+        
         # Return result
-        if isinstance(result, str):
-           return render_template('index.html', error=result)
-        else:
-           dist, predecessor = result
-           path_list = graph.get_path(predecessor, destination)
-           path = graph.construct_path(path_list, source_vertices, destination)
-           path = {'source': source_vertices, 'destination': destination, 'path': path}
-           return render_template('result.html', dist=dist, predecessor=path_list, path=path)
+
+        dist = result
+        path_list = graph.get_path(destination, max_stops)
+        if path_list == -1:
+            return render_template('error.html', error="No path Found")
+        path = graph.construct_path(destination)
+        path = {'source': source_vertices, 'destination': destination, 'path': path}
+        return render_template('result.html', dist=dist[max_stops], predecessor=path_list, path=path)
+        
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

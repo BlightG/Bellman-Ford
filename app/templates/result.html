@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-<p> Hello </p>
-<p> dist = {{ dist }} </p>
-<p> predecessor = {{ predecessor }} </p>
-<p> shortest parth to {{ path['destination'] }} from {{ path['source'] }} = {{ path['path'] }} </p>
+<div class="centered">
+    <h2> Shortest path to node {{ path['destination'] }} from source node {{ path['source'] }} = {{ path['path'] }}
+    </h2>
+    <h2>
+        with combined cost of {{ dist }}
+    </h2>
+</div>
 {% endblock %}

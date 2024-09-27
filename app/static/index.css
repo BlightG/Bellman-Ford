@@ -9,6 +9,17 @@
     font-family: Arial, sans-serif;
 }
 
+body {
+    background-color: #9fc6ef;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.content {
+    margin-top: 70px;
+}
+
 /* Form styles */
 form {
     display: flex;
@@ -77,15 +88,91 @@ form button:hover {
     opacity: 1;
 }
 
-.message {
-    padding: 10px;
-    margin: 5px;
-    background-color: #f3f3f3
-}
-
 nav a {
-    color: #d64161;
-    font-size: 3em;
+    color: #02456c;
+    font-size: 2.7em;
     margin-left: 50px;
     text-decoration: none;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    z-index: 1000;
+}
+
+.centered {
+    width: 50%;
+    /* Define the width of the element */
+    margin: auto;
+    /* Automatically add equal left and right margins */
+    padding: 20px;
+    text-align: center;
+    /* Align text inside the div to the center (optional) */
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    /* Optional: Align them vertically in the center */
+}
+
+.flex-container label {
+    margin-right: 10px;
+    /* Add some space between the label and input */
+}
+
+.submit {
+    width: fit-content;
+    margin: auto;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px
+}
+
+/* Simple styling for the sidebar */
+#sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    margin-top: 70px;
+    background-color: #f4f4f4;
+    border-right: 3px solid #0c3966;
+    border-top: 3px solid #020450;
+    border-radius: 13px;
+    overflow-y: auto;
+    padding: 10px;
+
+}
+
+#main-content {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+.saved-form {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
 }
